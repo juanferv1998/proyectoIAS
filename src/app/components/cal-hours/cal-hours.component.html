@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+            <form #calForm ="ngForm"  >
+                <div class="form-group">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="id_tecnico" 
+                    placeholder="Identificacion tecnico" 
+                    [(ngModel)] = "filterWeek"
+                
+                    />
+                </div>  
+                <div class="form-group">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="semana" 
+                    placeholder="# Semana"
+                    
+                   
+                    />
+                </div>  
+               
+                <button class="btn btn-primary btn-sm">Consultar</button>
+            </form>
+        </div>
+      </div>
+    </div>  
+    <div class="col-md-8">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>id tecnico</th>
+              <th>Semana</th>
+              <th>Horas Normales</th>
+              <th>Horas Nocturnas</th>
+              <th>Horas Domicales</th>
+              <th>Horas Normales Extras</th>
+              <th>Horas Nocturnas Extras</th>
+              <th>Horas Dominicales Extras</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let hours of calhourService.hours | filter: filterWeek ">
+                  
+                  <td>{{ hours._id.id_tecnico }}</td>
+                  <td>{{ hours._id.semana }}</td>
+                  <td>{{ hours.horasNormales }}</td>
+                  <td>{{ hours.horasNocturnas }}</td>
+                  <td>{{ hours.horasDominicales }}</td>
+                  <td>{{ hours.horasNormalesExtras }}</td>
+                  <td>{{ hours.horasNocturnasExtras}}</td>
+                  <td>{{ hours.horasDominicalesExtras }}</td>
+  
+              </tr>
+    
+          </tbody>
+          
+        </table>
+      </div>  
+</div>
+
